@@ -72,7 +72,8 @@ Start | End | Penalty | Description
 ## 30-minute Unconditional Cancellation Activity <a name="30-min-policy"></a>
 We have initiated a cancellation related activity where hotels could register for participation. In this activity, hotels could claim that reservations made on certain rooms could be cancelled free of charge within 30 minutes after confirmation. If we enable this type of cancellation for your credentail, you could combine array `CancelPolicyInfos` with object `FreeCancelPolicyInfo` (if exists) to get a more relaxed cancellation policy. 
 
-**Below picture introduces how to combine them. **
+**Below picture introduces how to use them combinedly.**
+
 ![Picture is missing, contact tech team for help.](../assets/pictures/cancellation_policy.png)
 
 
