@@ -284,4 +284,4 @@ Above works for **international hotels only** (hotels in Hong Kong, Macao and Ta
 ![Picture is missing.](../assets/pictures/launch-requirements-bookingpage-taxfee.png)
 
 ## 3.7 Credit cards must be encrypted for security purpose
-You must also follow PCI (Payment Card Industry) regulations when requesting, handling and storing customer credit card data. When you pass a credit card to us to guarantee for a reservation made on a [pay-at-hotel room](#pay-type), credit card must be encrypted following our [encryption algorithm](#encryption-algorithm)."
+You must also follow PCI (Payment Card Industry) regulations when requesting, handling and storing customer credit card data. When you pass a credit card to us to guarantee for a reservation made on a [pay-at-hotel room](#pay-type), credit card must be encrypted following our [encryption algorithm](#encryption-algorithm).
