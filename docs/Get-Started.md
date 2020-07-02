@@ -1,3 +1,5 @@
+# Get-Started
+
 ## 1. Become a partner
 You need to become our partner in order to develop our APIs. If you haven't done so, apply to our partnership manager.
 
