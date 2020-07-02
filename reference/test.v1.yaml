@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: test
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /hello:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-hello
+    post:
+      summary: ''
+      operationId: post-hello
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples: {}
+        description: ''
+components:
+  schemas: {}
