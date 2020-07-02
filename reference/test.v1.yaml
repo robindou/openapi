@@ -11,6 +11,21 @@ paths:
       tags: []
       responses: {}
       operationId: get-hello
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+            examples: {}
+        description: ''
     post:
       summary: ''
       operationId: post-hello
