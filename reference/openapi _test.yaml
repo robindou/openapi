@@ -2507,14 +2507,8 @@ paths:
                   description: It defines extended conditions to get hotel static content.
                   properties:
                     PrimaryLangID:
-                      type: array
-                      default: zh-cn
                       description: It defines the language in which the response content will be.
-                      enum:
-                        - zh-cn
-                        - en
-                        - jp
-                        - kr
+                      type: array
                       items:
                         type: string
                         enum:
@@ -2525,13 +2519,15 @@ paths:
                           - '5'
                     ExtendedNodes:
                       type: array
-                      description: It defines what type of content will be responded. You could choose either or all of these possible values.
-                      uniqueItems: false
+                      description: |-
+                        It defines what type of content will be responded. You could choose either or all of these possible values. 
+
+                        ```
+                        "HotelStaticInfo.GeoInfo" "HotelStaticInfo.NearbyPOIs" "HotelStaticInfo.TransportationInfos" "HotelStaticInfo.Brand" "HotelStaticInfo.Group" "HotelStaticInfo.Ratings" "HotelStaticInfo.Policies" "HotelStaticInfo.NormalizedPolicies.ChildAndExtraBedPolicy" "HotelStaticInfo.NormalizedPolicies.MealsPolicy" "HotelStaticInfo.NormalizedPolicies.MealsPolicyV2" "HotelStaticInfo.AcceptedCreditCards" "HotelStaticInfo.ImportantNotices" "HotelStaticInfo.Facilities" "HotelStaticInfo.FacilitiesV2" "HotelStaticInfo.Pictures" "HotelStaticInfo.Descriptions" "HotelStaticInfo.ContactInfo" "HotelStaticInfo.ArrivalTimeLimitInfo" "HotelStaticInfo.DepartureTimeLimitInfo" "HotelStaticInfo.HotelTags.ReservedData" "HotelStaticInfo.HotelTags.IsBookable" "HotelStaticInfo.HotelTags.IsHeCheng" "HotelStaticInfo.ExternalFacility.Parking" "HotelStaticInfo.ExternalFacility.ChargingPoint" "HotelStaticInfo.BossInfos" "HotelStaticInfo.SellerShowInfos" "HotelStaticInfo.VideoItems" "HotelStaticInfo.HotelPromotions" "HotelStaticInfo.HotelTaxRuleInfos" "HotelStaticInfo.SepecialServiceForChinese" "HotelStaticInfo.HotelFeatures" "HotelStaticInfo.HotelUsedNames" "HotelStaticInfo.ContactPersonInfos" "HotelStaticInfo.ApplicabilityInfo"
+                        ```
+                      minItems: 1
                       items:
                         type: string
-                        enum:
-                          - HotelStaticInfo.GeoInfo
-                          - HotelStaticInfo.NearbyPOIs
                     SearchTags:
                       type: array
                       description: '`Reserved array for internal use`'
