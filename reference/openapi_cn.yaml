@@ -2,7 +2,7 @@ openapi: 3.0.0
 servers:
   - url: 'https://BaseURL'
 info:
-  title: Trip.com Affiliate Partnership
+  title: Trip.com分销合作伙伴
   version: '1.1'
   contact:
     name: Robin Dou
@@ -11,79 +11,78 @@ info:
   license:
     name: N/A
   description:
-    $ref: ../docs/Overview.md
   x-logo:
     url: ../assets/pictures/logo.jpg
     backgroundColor: '#FFFFFF'
     altText: TRIP.COM
 tags:
-  - name: About TAP
+  - name: 关于TAP
     description:
-        $ref: ../docs/About-TAP.md
-  - name: Change Logs
+        $ref: ../docs/About-TAP-CN.md
+  - name: 修改记录
     description:
-        $ref: ../docs/Change-Logs.md
-  - name: Getting Started
+        $ref: ../docs/Change-Logs-CN.md
+  - name: 快速入门
     description:
         $ref: ../docs/Get-Started.md
-  - name: Launch Requirements
+  - name: 验收要求
     description:
         $ref: ../docs/Launch-Requirements.md
-  - name: Hotel Metasearch
+  - name: 跳转预定
     description:
         $ref: ../docs/Hotel-Metasearch.md
-  - name: Hotel Direct Booking
+  - name: 全闭环预定
     description:
         $ref: ../docs/Hotel-Direct-Booking.md
-  - name: Authentication
+  - name: 授权认证
     description: |-
       <a name="authentication"></a>
-      There are three steps before developing our developing our APIs: Get an Alliance ID, Site ID and API Key, configure for authentication and begin testing. For authentication, we are adopting a mechanism similar to OAuth2.0 which involves two major things. First thing is to generate a valid access token to access our backend APIs while second thing is to update the access token before previous token expires.
-  - name: Geography Service
-    description: 'This chapter introduces how to access our geographic definitions (continents, countries, provinces, parent cities, child cities) and all hotels within each city spreading over all countries.'
-  - name: Static Content Service
+      开发Trip.com API之前，您需要完成两件事。首先您需要向您的Trip.com商务经理申请Alliance ID，Site ID 和 Proxy Key，其次你需要配置接口认证服务。我们采用了类似于Oauth2.0的认证方式，首先您需要初始化一个访问令牌Access Token，其次在访问令牌快过期时通过Refreshing Token更新访问令牌。
+  - name: 地理信息
+    description: 本章介绍如何访问Trip.com地理信息以及地理信息下的酒店清单。基于酒店所在的地理位置，您可以支持用户根据地理位置来查询可用酒店。
+  - name: 酒店静态信息
     description: This chapter helps you access hotel static content of the queried hotel including both hotel-level static content and room-level static content. It also suggests you how to update static content based on various update mechanisms.
-  - name: Hotel Price Service
+  - name: 酒店动态报价
     description: This chapter introduces how to list our hotels on your city page and your hotel page.
-  - name: Reservation Service
+  - name: 预订酒店
     description: This chapter introduces how to make reservations to different types of sellable rooms.
-  - name: Reservation Confirmation
+  - name: 确认订单
     description: This chapter introduces how to synchronize reservation status of successfully submitted reservations from us. You could only confirm to your guests after we confirm you.
-  - name: Post-Reservation Service
+  - name: 订单后处理
     description: 'This chapter introduces multiple APIs which might be used at post-reservation stage such as cancelling reservations, checking partial refunding for No-Show reservation and fetching night audit result for pay-at-hotel reservations.'
-  - name: Extended API Service
+  - name: 未归类API
     description: 'This chapter includes multiple extra APIs which might be of help for your integration, but haven''t been grouped into other chapters yet.'
-  - name: Code Lists
+  - name: 编码表
     description:
         $ref: ../docs/Code-Lists.md
-  - name: Knowledge Hub
+  - name: 知识库
     description:
         $ref: ../docs/Knowledge-Hub.md
 x-tagGroups:
-  - name: Introduction
+  - name: 介绍
     tags:
-      - About TAP
-      - Change Logs
-      - Getting Started
-      - Launch Requirements
-  - name: Product solutions
+      - 关于TAP
+      - 修改记录
+      - 快速入门
+      - 验收要求
+  - name: 产品方案
     tags:
-      - Hotel Metasearch
-      - Hotel Direct Booking
-  - name: API Reference
+      - 跳转预定
+      - 全闭环预定
+  - name: API列表
     tags:
-      - Authentication
-      - Geography Service
-      - Static Content Service
-      - Hotel Price Service
-      - Reservation Service
-      - Reservation Confirmation
-      - Post-Reservation Service
-      - Extended API Service
-  - name: References
+      - 授权认证
+      - 地理信息
+      - 酒店静态信息
+      - 酒店动态报价
+      - 预订酒店
+      - 确认订单
+      - 订单后处理
+      - 未归类API
+  - name: 参考资料
     tags:
-      - Code Lists
-      - Knowledge Hub
+      - 编码表
+      - 知识库
 paths:
   /InitializeAccessToken:
     servers:
@@ -129,12 +128,12 @@ paths:
                       It's used to generate new access token and new refreshing token. We suggest you generate new access token and new refreshing token `1 minute` before the present access token expires.
       description: 'This API is designed to initialize the first access token. So don''t use it to generate a new access token except for initialization purpose. If you need to generate a new access token, please use `Refresh Access Token` API directly.'
       tags:
-        - Authentication
+        - 授权认证
       parameters:
         - $ref: '#/components/parameters/AID'
         - $ref: '#/components/parameters/SID'
         - $ref: '#/components/parameters/KEY'
-      summary: Initialize Access Token
+      summary: 初始化令牌
       operationId: get-InitializeAccessToken
   /RefreshAccessToken:
     servers:
@@ -179,7 +178,7 @@ paths:
                       It's the new `refreshing token` thus generated. The validity of a new refresh token is `15 minutes`.
 
                       It's used to generate new access token and new refreshing token. We suggest you generate new access token and new refreshing token `1 minute` before the present access token expires.
-      summary: Refresh Access Token
+      summary: 更新令牌
       description: |-
         This API is used to generate a new access token and a new refreshing token. The new access token is used to request each API, while the new refresh token is used to generate a new pair of access token and refreshing token for the next time. We suggest you generate a new pair of access token and refreshing token `1 minute `before the current access token expires.
 
@@ -189,7 +188,7 @@ paths:
         - $ref: '#/components/parameters/SID'
         - $ref: '#/components/parameters/Refresh_Token'
       tags:
-        - Authentication
+        - 授权认证
       operationId: post-RefreshAccessToken
   /GetCityList:
     servers:
@@ -284,9 +283,9 @@ paths:
                             ContinentEnName:
                               type: string
                               description: Continent name in English
-      summary: Get City List
+      summary: 查询城市列表
       tags:
-        - Geography Service
+        - 地理信息
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -378,9 +377,9 @@ paths:
                     description: It's part or all of hotel ids within the city.
                     items:
                       type: string
-      summary: Get Hotel List
+      summary: 查询酒店列表
       tags:
-        - Geography Service
+        - 地理信息
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -2544,9 +2543,9 @@ paths:
                         enum:
                           - T
                           - F
-      summary: Get Hotel Static Info
+      summary: 查询酒店静态信息
       tags:
-        - Static Content Service
+        - 酒店静态信息
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -3927,7 +3926,7 @@ paths:
                           + If it has a valid value, then  pass it into next-time request of the same hotel.
                           + If the parameter doesn't exist, then you have downloaded static content of all rooms under the same hotel. So pick up another hotel.
       tags:
-        - Static Content Service
+        - 酒店静态信息
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -4053,7 +4052,7 @@ paths:
                   required:
                     - PageSize
                     - LastRecordID
-      summary: Get Room Static Info
+      summary: 查询房型静态信息
       description: This API help to download static content of all physical and sellable rooms within a single hotel.
       operationId: post-GetRoomStaticInfo
   /CheckStaticInfoChange:
@@ -4142,9 +4141,9 @@ paths:
                             ##### If a specific extended node is responded, you could request the extended node alone to update static content of that dimension.
 
                             ##### For example, `HotelStaticInfo.FacilitiesV2` means facility content has changed. In this case, you could query `Get Hotel Static Info` API to update facility content of the hotel and its physical rooms.
-      summary: Check Static Info Change
+      summary: 监测静态信息变化
       tags:
-        - Static Content Service
+        - 酒店静态信息
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -4412,9 +4411,9 @@ paths:
                                 type: integer
                               IsJustifyConfirm:
                                 type: boolean
-      summary: Get Hotel Lowest Price
+      summary: 查询多酒店起价
       tags:
-        - Hotel Price Service
+        - 酒店动态报价
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -5209,9 +5208,9 @@ paths:
                         RoomTypeID:
                           type: integer
                           description: Physical room id
-      summary: Get Hotel Detail Price
+      summary: 查询单酒店所有价格
       tags:
-        - Hotel Price Service
+        - 酒店动态报价
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -6549,9 +6548,9 @@ paths:
                       - zh
                       - en
                     default: zh
-      summary: Provision Check
+      summary: 检查房型是否可订
       tags:
-        - Reservation Service
+        - 预订酒店
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -7168,9 +7167,9 @@ paths:
                     enum:
                       - zh
                       - en
-      summary: Reservation Saving
+      summary: 创建临时订单号
       tags:
-        - Reservation Service
+        - 预订酒店
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -7965,9 +7964,9 @@ paths:
                     enum:
                       - zh
                       - en
-      summary: Reservation Submitting
+      summary: 提交临时订单号
       tags:
-        - Reservation Service
+        - 预订酒店
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -8331,9 +8330,9 @@ paths:
                     enum:
                       - zh
                       - en
-      summary: Reservation Status Change
+      summary: 监测订单状态变化
       tags:
-        - Reservation Confirmation
+        - 确认订单
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -9316,9 +9315,9 @@ paths:
                     enum:
                       - zh
                       - en
-      summary: Reservation Details
+      summary: 查询订单明细
       tags:
-        - Reservation Confirmation
+        - 确认订单
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -9471,9 +9470,9 @@ paths:
                       Placeholder:
                         type: string
                         description: '`Reserved parameter for internal use`'
-      summary: Get Payment Elements
+      summary: 获取信用卡卡要素
       tags:
-        - Extended API Service
+        - 未归类API
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -9556,9 +9555,9 @@ paths:
                   err_msg:
                     type: string
                     description: It's the error message.
-      summary: Payment Confirmation API
+      summary: 同步已支付状态
       tags:
-        - Extended API Service
+        - 未归类API
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -9690,9 +9689,9 @@ paths:
                       + `zh` means Chinese.
                       + `en` means English.
                     default: zh
-      summary: Cancel Reservation
+      summary: 取消已预订订单
       tags:
-        - Post-Reservation Service
+        - 订单后处理
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -9912,9 +9911,9 @@ paths:
                         OperationTime:
                           type: string
                           description: It's the datetime when the refunding record happened.
-      summary: Check Partial Refunding
+      summary: 监测订单部分退款
       tags:
-        - Post-Reservation Service
+        - 订单后处理
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
@@ -10139,9 +10138,9 @@ paths:
                             ##### If guests haven't checked out, it's the expected room nights. In this case, it equals total room nights specified in the initial reservation.
 
                             ##### If guests have checked out, it's the actual room nights.
-      summary: Get Night Audit Result
+      summary: 查询订单日夜审结果
       tags:
-        - Post-Reservation Service
+        - 订单后处理
       parameters:
         - $ref: '#/components/parameters/ICODE'
         - $ref: '#/components/parameters/UUID'
